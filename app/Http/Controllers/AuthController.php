@@ -17,17 +17,17 @@ class AuthController extends Controller
     public function prosesRegister(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:users,email',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
-            'role'     => 'required|in:admin,mahasiswa'
+            'role' => 'required|in:admin,mahasiswa'
         ]);
 
         User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role'     => $request->role,
+            'role' => $request->role,
         ]);
 
         return redirect('/login')->with('sukses', 'Registrasi berhasil! Silakan login dengan akun kamu.');
@@ -41,7 +41,7 @@ class AuthController extends Controller
     public function prosesLogin(Request $request)
     {
         $kredensial = $request->validate([
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required'
         ]);
 

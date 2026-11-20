@@ -12,18 +12,22 @@
         button { width: 100%; margin-top: 20px; padding: 10px; background: #27ae60; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
         .error { color: #e74c3c; font-size: 13px; margin-top: 5px; }
         .link { text-align: center; margin-top: 15px; font-size: 14px; }
+        .watermark { text-align: center; margin-top: 18px; padding-top: 12px; border-top: 1px dashed #e2e8f0; font-size: 12px; color: #64748b; }
+        .watermark span { background: #f1f5f9; padding: 4px 10px; border-radius: 20px; font-weight: bold; color: #1e293b; display: inline-block; border: 1px solid #cbd5e1; }
     </style>
 </head>
 <body>
     <div class="card">
         <h2>Registrasi Akun Kampus</h2>
+
         @if ($errors->any())
             <div class="error">
                 @foreach ($errors->all() as $err)
-                    <div>{{ $err }}</div>
+                    <div>• {{ $err }}</div>
                 @endforeach
             </div>
         @endif
+
         <form method="POST" action="{{ url('/register') }}">
             @csrf
             <label>Nama Lengkap</label>
@@ -43,8 +47,13 @@
 
             <button type="submit">Daftar Sekarang</button>
         </form>
+
         <div class="link">
             Sudah punya akun? <a href="{{ url('/login') }}">Login di sini</a>
+        </div>
+
+        <div class="watermark">
+            <span>WM: Rifkillah muliya al-faris</span>
         </div>
     </div>
 </body>
